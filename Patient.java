@@ -18,11 +18,10 @@ public class Patient extends User {
 	Doctor myDoctor;
 	Nurse myNurse;
 	
-	Patient(String username, String password, String birthday, int age) {
+	Patient(String username, String password, String birthday) {
 		
 		super(username, password);
 		this.birthday = birthday;
-		this.age = age;
 		
 		bloodPressure = new ArrayList<>();
 		bodyTemp = new ArrayList<>();
