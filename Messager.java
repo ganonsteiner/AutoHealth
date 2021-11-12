@@ -1,12 +1,12 @@
 package application;
 
-public class Messager {
+public class Message {
 	String bodyText;
 	String subject;
 	String sender;
 	String receiver;
 	
-	public Messager(String text, String inSubject, String inSender, String inRec) {
+	public Message(String text, String inSubject, String inSender, String inRec) {
 		bodyText = text;
 		subject = inSubject;
 		sender = inSender;
