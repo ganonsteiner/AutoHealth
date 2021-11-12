@@ -1,4 +1,5 @@
 package application;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -36,9 +37,9 @@ public class Doctor extends User implements Serializable
 	{
 		for(int i = 0; i < nNurses.size(); i++)
 		{
-			for(int j = 0; j < nNurses.get(i).inPatients.size(); j++)
+			for(int j = 0; j < nNurses.get(i).getPatients().size(); j++)
 			{
-				Patient pat = nNurses.get(i).inPatients.get(j);
+				Patient pat = nNurses.get(i).getPatients().get(j);
 				if(pat.getUsername().equals(inUser))
 				{
 					pat.addPhysicals(inPhysical);
@@ -51,9 +52,9 @@ public class Doctor extends User implements Serializable
 	{
 		for(int i = 0; i < nNurses.size(); i++)
 		{
-			for(int j = 0; j < nNurses.get(i).inPatients.size(); j++)
+			for(int j = 0; j < nNurses.get(i).getPatients().size(); j++)
 			{
-				Patient pat = nNurses.get(i).inPatients.get(j);
+				Patient pat = nNurses.get(i).getPatients().get(j);
 				if(pat.getUsername().equals(inUser))
 				{
 					//pat.setPrescription(inPrescription);
