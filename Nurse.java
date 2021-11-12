@@ -1,11 +1,13 @@
+
 package application;
 
+import java.io.Serializable;
 import java.util.*;
 
 
-public class Nurse extends User {
+public class Nurse implements Serializable extends User {
 	
-	Doctor nurseDoc = new Doctor();
+	private static final long serialVersionUID = 1L;
 	
 	protected ArrayList<Patient> nPatients;
 	
@@ -30,3 +32,5 @@ public class Nurse extends User {
 	public ArrayList<Patient> getPatients() {
 		return nPatients;
 	}
+	
+}
