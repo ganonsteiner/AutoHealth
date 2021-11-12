@@ -38,8 +38,6 @@ public class Nurse extends User implements Serializable {
 		
 	}
 	
-	// add nurse constructor for 
-	
 	public void createPatientAccount(String userName, String password, String inBirth, Doctor doc, Nurse ptNurse) {
 		Patient newPatient = new Patient(userName, password, inBirth);
 		addPatient(newPatient);
