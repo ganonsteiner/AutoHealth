@@ -1,18 +1,21 @@
+package application;
+
 import java.util.*;
+
 
 public class Nurse extends User {
 	
-	protected ArrayList<Patient> inPatients;
+	Doctor nurseDoc = new Doctor();
 	
+	protected ArrayList<Patient> nPatients;
 	
-	// method will create a new Patient object using arguments and add the patient to the 
 	public void createPatientAccount(String userName, String password, String inBirth) {
 		Patient newPatient = new Patient(userName, password, inBirth);
 		addPatient(newPatient);
 	}
 	
 	public void addPatient(Patient inPatient) {
-		inPatients.add(inPatient);
+		nPatients.add(inPatient);
 	}
 	
 	public void addPatientData(Patient inPatient, String inBloodPressure, double inBodyTemperature, String inWeight, double inHeight, String inAllergens, String inHealth) {
@@ -25,7 +28,5 @@ public class Nurse extends User {
 	}
 	
 	public ArrayList<Patient> getPatients() {
-		return inPatients;
+		return nPatients;
 	}
-	
-}
