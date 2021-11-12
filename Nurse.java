@@ -4,6 +4,8 @@ public class Nurse extends User {
 	
 	protected ArrayList<Patient> inPatients;
 	
+	
+	// method will create a new Patient object using arguments and add the patient to the 
 	public void createPatientAccount(String userName, String password, String inBirth) {
 		Patient newPatient = new Patient(userName, password, inBirth);
 		addPatient(newPatient);
