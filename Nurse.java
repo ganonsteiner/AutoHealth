@@ -2,8 +2,6 @@ import java.util.*;
 
 public class Nurse extends User {
 	
-	
-	
 	protected ArrayList<Patient> inPatients;
 	
 	public void createPatientAccount(String userName, String password, String inBirth) {
