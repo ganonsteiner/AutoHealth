@@ -3,9 +3,9 @@ import java.util.*;
 
 public class Patient extends User {
 	ArrayList<String> bloodPressure;
-	ArrayList<double> bodyTemp;
-	ArrayList<double> weight;
-	ArrayList<double> height;
+	ArrayList<Double> bodyTemp;
+	ArrayList<Double> weight;
+	ArrayList<Double> height;
 	String birthday;
 	String insurance;
 	String phoneNumber;
@@ -18,14 +18,19 @@ public class Patient extends User {
 	Doctor myDoctor;
 	Nurse myNurse;
 	
-	public Patient(String inUser, String inPass, String inBirth ) {
-		if(inUser !=null && inPass != null && inBirth != null)	{
-			userName = inUser;
-			password = inPass;
-			birthday = inBirth;
+	Patient(String username, String password, String birthday, int age) {
 		
-	}else {
-		throw new IllegalStateException("You need a user name, password, and birthday");}
+		super(username, password);
+		this.birthday = birthday;
+		this.age = age;
+		
+		bloodPressure = new ArrayList<>();
+		bodyTemp = new ArrayList<>();
+		weight = new ArrayList<>();
+		height = new ArrayList<>();
+		allergens = new ArrayList<>();
+		healthConcerns = new ArrayList<>();
+		physicals = new ArrayList<>();
 	}
 	
 	public void setInsurance(String inInsurance) {
@@ -41,11 +46,11 @@ public class Patient extends User {
 	}
 	
 	public void addAllergens(String inPatientAllergens) {
-		allergens=inPatientAllergens;
+		allergens.add(inPatientAllergens);
 	}
 	
 	public void addHealth(String inHealth) {
-		healthConcerns = inHealth;
+		healthConcerns.add(inHealth);
 	}
 	
 	public void setAge(int inAge) {
@@ -95,24 +100,34 @@ public class Patient extends User {
 		return bloodPressure;
 	}
 	
-	public ArrayList<double> getBodyTemp() {
+	public ArrayList<Double> getBodyTemp() {
 		return bodyTemp;
 	}
 	
-	public ArrayList<double> getWeight() {
+	public ArrayList<Double> getWeight() {
 		return weight;
 	}
 	
-	public ArrayList<double> getHeight(){
+	public ArrayList<Double> getHeight(){
 		return height;
 	}
 	
 	public void message(String username, Message message) {
-		if(username.equals(myDoctor.username)) {
+		
+		this.messageHistory.add(message);
+		
+		if(username.equals(myDoctor.getUsername())) {
 			
-		} else if(username.equals(myNurse.username)) {
+			myDoctor.getMessageHistory.add(message);
+			
+		} else if(username.equals(myNurse.getUsername())) {
+
+			myNurse.getMessageHistory.add(message);
 			
 		} else {
+			
+			// invalid recipient... gotta handle this somehow
+			// could have this return false and make an error message pop up
 			
 		}
 	}
