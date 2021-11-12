@@ -2,7 +2,7 @@ package application;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Doctor implements Serializable
+public class Doctor extends User implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
@@ -36,9 +36,9 @@ public class Doctor implements Serializable
 	{
 		for(int i = 0; i < nNurses.size(); i++)
 		{
-			for(int j = 0; j < nNurses.get(i).nPatients.size(); j++)
+			for(int j = 0; j < nNurses.get(i).inPatients.size(); j++)
 			{
-				Patient pat = nNurses.get(i).nPatients.get(j);
+				Patient pat = nNurses.get(i).inPatients.get(j);
 				if(pat.getUsername().equals(inUser))
 				{
 					pat.addPhysicals(inPhysical);
@@ -51,12 +51,12 @@ public class Doctor implements Serializable
 	{
 		for(int i = 0; i < nNurses.size(); i++)
 		{
-			for(int j = 0; j < nNurses.get(i).nPatients.size(); j++)
+			for(int j = 0; j < nNurses.get(i).inPatients.size(); j++)
 			{
-				Patient pat = nNurses.get(i).nPatients.get(j);
+				Patient pat = nNurses.get(i).inPatients.get(j);
 				if(pat.getUsername().equals(inUser))
 				{
-					pat.setPrescription(inPrescription);
+					//pat.setPrescription(inPrescription);
 				}
 			}
 		}
@@ -75,5 +75,10 @@ public class Doctor implements Serializable
 	public ArrayList<Nurse> getNurses()
 	{
 		return nNurses;
+	}
+
+	public ArrayList<Message> getMessageHistory()
+	{
+		return super.getMessageHistory();
 	}
 }
