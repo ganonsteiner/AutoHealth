@@ -15,6 +15,9 @@ public class Patient extends User {
 	ArrayList<String> physicals;
 	int age;
 	
+	Doctor myDoctor;
+	Nurse myNurse;
+	
 	public Patient(String inUser, String inPass, String inBirth ) {
 		if(inUser !=null && inPass != null && inBirth != null)	{
 			userName = inUser;
@@ -104,6 +107,13 @@ public class Patient extends User {
 		return height;
 	}
 	
-	
-	
+	public void message(String username, Message message) {
+		if(username.equals(myDoctor.username)) {
+			
+		} else if(username.equals(myNurse.username)) {
+			
+		} else {
+			
+		}
+	}
 }
