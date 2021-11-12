@@ -1,138 +1,72 @@
+//package application;
 
-package application;
-import java.util.*;
 import java.io.Serializable;
+import java.util.*;
 
-public class Patient extends User implements Serializable{
+public class Nurse extends User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private ArrayList<String> bloodPressure;
-	private ArrayList<Double> bodyTemp;
-	private ArrayList<Double> weight;
-	private ArrayList<Double> height;
-	private String birthday;
-	private String insurance;
-	private String phoneNumber;
-	private String emailAddress;
-	private ArrayList<String> allergens;
-	private ArrayList<String> healthConcerns;
-	private ArrayList<String> physicals;
-	private int age;
+	private String nurseName;
+	private Doctor nurseDoctor;
 
-	Doctor myDoctor;
-	Nurse myNurse;
+	protected ArrayList<Patient> patients;
 
-	Patient(String username, String password, String birthday) {
-
+	// add nurse constructor that will add a new nurse to the arraylist in the
+	// doctor class
+	public Nurse(String username, String password, String name, Doctor doctor) {
 		super(username, password);
-		this.birthday = birthday;
-
-		bloodPressure = new ArrayList<>();
-		bodyTemp = new ArrayList<>();
-		weight = new ArrayList<>();
-		height = new ArrayList<>();
-		allergens = new ArrayList<>();
-		healthConcerns = new ArrayList<>();
-		physicals = new ArrayList<>();
+		patients = new ArrayList<Patient>();
+		
+		nurseName = name;
+		nurseDoctor = doctor;
 	}
 
-	public void setInsurance(String inInsurance) {
-		insurance = inInsurance;
-	}
-
-	public void setPhoneNumber(String inPhone) {
-		phoneNumber = inPhone;
-	}
-
-	public void setEmail(String inEmail) {
-		emailAddress = inEmail;
-	}
-
-	public void addAllergens(String inPatientAllergens) {
-		allergens.add(inPatientAllergens);
-	}
-
-	public void addHealth(String inHealth) {
-		healthConcerns.add(inHealth);
-	}
-
-	public void setAge(int inAge) {
-		age = inAge;
-	}
-
-	public void addPhysicals(String inPhys) {
-		physicals.add(inPhys);
-	}
-
-	public void setVitals(String inBloodPressure, double inBodyTemp, double inWeight, double inHeight) {
-		bloodPressure.add(inBloodPressure);
-		bodyTemp.add(inBodyTemp);
-		weight.add(inWeight);
-		height.add(inHeight);
-	}
-
-	public String getInsurance() {
-		return insurance;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public String getEmail() {
-		return emailAddress;
-	}
-
-	public ArrayList<String> getAllergens() {
-		return allergens;
-	}
-
-	public ArrayList<String> getHealthConcerns() {
-		return healthConcerns;
-	}
-
-	public ArrayList<String> getPhysicals() {
-		return physicals;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public ArrayList<String> getBloodPressure() {
-		return bloodPressure;
-	}
-
-	public ArrayList<Double> getBodyTemp() {
-		return bodyTemp;
-	}
-
-	public ArrayList<Double> getWeight() {
-		return weight;
-	}
-
-	public ArrayList<Double> getHeight(){
-		return height;
-	}
-
-	public void message(String username, Message message)
-	{
+	public void message(String username, Message message) {
 
 		this.messageHistory.add(message);
 
-		if(username.equals(myDoctor.getUsername()))
-		{
-			myDoctor.getMessageHistory().add(message);
+		if (username.equals(nurseDoctor.getUsername())) {
+			nurseDoctor.getMessageHistory().add(message);
 		}
-		else if(username.equals(myNurse.getUsername()))
-		{
-			myNurse.getMessageHistory().add(message);
+
+		for (int i = 0; i < patients.size(); i++) {
+			if (username.equals(patients.get(i).getUsername())) {
+				patients.get(i).getMessageHistory().add(message);
+			}
 		}
-		else
-		{
-			// invalid recipient... gotta handle this somehow
-			// could have this return false and make an error message pop up
+	}
+
+	public void createPatientAccount(String userName, String password, String inBirth, Doctor doc, Nurse ptNurse) {
+		Patient newPatient = new Patient(userName, password, inBirth);
+		addPatient(newPatient);
+	}
+
+	public void addPatient(Patient inPatient) {
+		patients.add(inPatient);
+	}
+
+	public void addPatientData(String inUser, String inBloodPressure, double inBodyTemp, double inWeight, double inHeight, String inAllergens, String inHealth) {
+		
+		Patient patient;
+		
+		for(int i = 0; i < patients.size(); i++) {
+			if(inUser.equals(patients.get(i).getUsername())) {
+				patient = patients.get(i);
+				
+				patient.getBloodPressure().add(inBloodPressure);
+				patient.getBodyTemp().add(inBodyTemp);
+				patient.getWeight().add(inWeight);
+				patient.getHeight().add(inHeight);
+				patient.getAllergens().add(inAllergens);
+				patient.getHealthConcerns().add(inHealth);
+				
+				break;
+			}
 		}
+	}
+
+	public ArrayList<Patient> getPatients() {
+		return patients;
 	}
 }
