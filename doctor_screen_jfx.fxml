@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.1800796812749004" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="1257.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Control">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <SplitPane dividerPositions="0.07575757575757576" orientation="VERTICAL" prefHeight="625.0" prefWidth="220.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="24.0" prefWidth="176.0">
+                     <children>
+                        <Text layoutX="24.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patients" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="387.0" prefWidth="143.0">
+                     <children>
+                        <ChoiceBox layoutY="2.0" prefHeight="51.0" prefWidth="220.0" />
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <TabPane layoutX="1.0" prefHeight="625.0" prefWidth="1023.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="New Data">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Text layoutX="50.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Physical Test: " />
+                              <TextArea layoutX="220.0" layoutY="25.0" prefHeight="94.0" prefWidth="650.0" text="This test data input from doctor " />
+                              <Text layoutX="51.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prescriptions:" wrappingWidth="143.0" />
+                              <TextArea layoutX="221.0" layoutY="189.0" prefHeight="79.0" prefWidth="643.0" text="This is prescription data from the doctor" />
+                              <Button layoutX="220.0" layoutY="125.0" mnemonicParsing="false" text="Save" />
+                              <Button layoutX="220.0" layoutY="284.0" mnemonicParsing="false" text="Save" />
+                              <Button layoutX="221.0" layoutY="364.0" mnemonicParsing="false" text="Send to Pharmacy" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Old Data">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Text layoutX="14.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Previous Health Issues:" />
+                              <TextArea layoutX="14.0" layoutY="49.0" prefHeight="114.0" prefWidth="794.0" text="Previous data loaded from .txt file" />
+                              <Text layoutX="17.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prescriptions:" />
+                              <TextArea layoutX="17.0" layoutY="217.0" prefHeight="120.0" prefWidth="788.0" text="Current Prescriptions loaded from .txt file" />
+                              <Text layoutX="18.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Immunization History:" />
+                              <TextArea layoutX="20.0" layoutY="398.0" prefHeight="128.0" prefWidth="782.0" text="Immunization history loaded from .txt file" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Messaging">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="567.0" prefWidth="1025.0">
+                           <children>
+                              <TextArea layoutX="50.0" layoutY="71.0" prefHeight="244.0" prefWidth="842.0" text="Doctor: Your prescription has been sent!&#10;Patient : Thank you!&#10;Doctor: Your welcome, have a nice day!" />
+                              <Text layoutX="50.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Message History:" />
+                              <TextField layoutX="50.0" layoutY="347.0" text="Input message here" />
+                              <Button layoutX="373.0" layoutY="347.0" mnemonicParsing="false" text="Send" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Create Patient Account">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="567.0" prefWidth="1058.0">
+                           <children>
+                              <Button layoutX="115.0" layoutY="94.0" mnemonicParsing="false" onAction="#signUp" text="Create Account" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children></AnchorPane>
+  </items>
+</SplitPane>

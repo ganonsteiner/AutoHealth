@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.16220735785953178" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Control">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <SplitPane dividerPositions="0.06060606060606061" orientation="VERTICAL" prefHeight="398.0" prefWidth="94.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                     <children>
+                        <Label layoutX="15.0" layoutY="2.0" text="Patients" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                     <children>
+                        <TextArea layoutX="2.0" layoutY="3.0" prefHeight="360.0" prefWidth="92.0" text="&#10;&#10;&#10;&#10;Here will display&#10;Patient Name,&#10;Phone No,     " />
+                        <ChoiceBox layoutX="2.0" layoutY="2.0" prefHeight="25.0" prefWidth="92.0" />
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="483.0">
+         <children>
+            <TabPane layoutX="-4.0" layoutY="-2.0" prefHeight="398.0" prefWidth="507.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Patient Info">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextArea layoutX="3.0" layoutY="1.0" prefHeight="369.0" prefWidth="507.0" />
+                              <TextArea layoutX="159.0" layoutY="22.0" prefHeight="104.0" prefWidth="334.0" />
+                              <Label layoutX="14.0" layoutY="22.0" prefHeight="17.0" prefWidth="148.0" text="Health Concerns/Allergens:" />
+                              <Button layoutX="439.0" layoutY="316.0" mnemonicParsing="false" text="Save" />
+                              <Label layoutX="13.0" layoutY="156.0" text="Weight:" />
+                              <Label layoutX="14.0" layoutY="183.0" text="Height:" />
+                              <Label layoutX="5.0" layoutY="218.0" text="Body Temperature:" />
+                              <Label layoutX="14.0" layoutY="247.0" text="Blood Pressure:" />
+                              <TextField layoutX="55.0" layoutY="152.0" />
+                              <TextField layoutX="55.0" layoutY="179.0" />
+                              <TextField layoutX="106.0" layoutY="214.0" prefHeight="10.0" prefWidth="149.0" />
+                              <TextField layoutX="96.0" layoutY="243.0" prefHeight="17.0" prefWidth="149.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Create Patient Account">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button layoutX="162.0" layoutY="146.0" mnemonicParsing="false" onAction="#signUp" text="Go to create account" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Inbox">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TabPane layoutX="6.0" layoutY="1.0" prefHeight="369.0" prefWidth="498.0" tabClosingPolicy="UNAVAILABLE">
+                                <tabs>
+                                  <Tab text="Messages">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <TextArea layoutX="1.0" layoutY="2.0" prefHeight="339.0" prefWidth="498.0" text="Text file of messages." />
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </Tab>
+                                  <Tab text="Create New Message">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <TextArea layoutX="7.0" prefHeight="341.0" prefWidth="498.0" />
+                                                <Label layoutX="49.0" layoutY="56.0" text="Recipent(Username):" />
+                                                <TextField layoutX="166.0" layoutY="52.0" />
+                                                <Label layoutX="118.0" layoutY="77.0" text="Subject:" />
+                                                <TextField layoutX="166.0" layoutY="82.0" />
+                                                <Label layoutX="104.0" layoutY="118.0" text="Message:" />
+                                                <TextArea layoutX="166.0" layoutY="110.0" prefHeight="121.0" prefWidth="251.0" />
+                                                <Button layoutX="166.0" layoutY="249.0" mnemonicParsing="false" text="Send Message" />
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </Tab>
+                                </tabs>
+                              </TabPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children></AnchorPane>
+  </items>
+</SplitPane>
