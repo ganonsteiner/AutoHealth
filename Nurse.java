@@ -1,27 +1,21 @@
-package application;
-
 import java.util.*;
-
 
 public class Nurse extends User {
 	
-	// create arrayList of Patients
+	
+	
 	protected ArrayList<Patient> inPatients;
 	
-	// create a new patient account by calling the super constructor within the method
-	createPatientAccount(String userName, String password, String inBirth) {
-		super.createPatientAccount(userName, password, inBirth);
+	public void createPatientAccount(String userName, String password, String inBirth) {
+		Patient newPatient = new Patient(userName, password, inBirth);
+		addPatient(newPatient);
 	}
 	
-	
-	void addPatient(Patient inPatient) {
-		// add Patient object to the arraylist inPatients
+	public void addPatient(Patient inPatient) {
 		inPatients.add(inPatient);
 	}
 	
-	
-	// add the Patient's data to the Patient object that is passed in to the method
-	void addPatientData(Patient inPatient, String inBloodPressure, double inBodyTemperature, String inWeight, double inHeight, String inAllergens, String inHealth) {
+	public void addPatientData(Patient inPatient, String inBloodPressure, double inBodyTemperature, String inWeight, double inHeight, String inAllergens, String inHealth) {
 		inPatient.Vitals.bloodPressure = inBloodPressure;
 		inPatient.Vitals.bodyTemp = inBodyTemperature;
 		inPatient.Vitals.weight = inWeight;
@@ -30,10 +24,8 @@ public class Nurse extends User {
 		inPatient.healthConcerns.add(inHealth);
 	}
 	
-	// return the inPatients arrayList
-	ArrayList<Patient> getPatients() {
+	public ArrayList<Patient> getPatients() {
 		return inPatients;
 	}
-	
 	
 }
