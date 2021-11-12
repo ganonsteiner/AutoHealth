@@ -13,7 +13,7 @@ public class User {
 		this.messageHistory = new ArrayList<>();
 	}
 	
-	// Login method to be used by Doctor, Nurse, and Patinet
+	// Login method to be used by Doctor, Nurse, and Patient
 	public boolean login(String inputUser, String inputPass) {
 		if(this.username.equals(inputUser) && this.password.equals(inputPass)) {
 			return true;
