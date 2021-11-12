@@ -2,21 +2,21 @@ package application;
 import java.util.*;
 
 public class Patient extends User {
-	String bloodPressure;
-	double bodyTemp;
-	double weight;
-	double height;
+	ArrayList<String> bloodPressure;
+	ArrayList<double> bodyTemp;
+	ArrayList<double> weight;
+	ArrayList<double> height;
 	String birthday;
 	String insurance;
 	String phoneNumber;
 	String emailAddress;
-	String allergens;
-	String healthConcerns;
-	String physicals;
+	ArrayList<String> allergens;
+	ArrayList<String> healthConcerns;
+	ArrayList<String> physicals;
 	int age;
 	
 	public Patient(String inUser, String inPass, String inBirth ) {
-		if(inUser !=null || inPass != null || inBirth != null)	{
+		if(inUser !=null && inPass != null && inBirth != null)	{
 			userName = inUser;
 			password = inPass;
 			birthday = inBirth;
@@ -50,14 +50,14 @@ public class Patient extends User {
 	}
 	
 	public void addPhysicals(String inPhys) {
-		physicals = inPhys;
+		physicals.add(inPhys);
 	}
 	
 	public void setVitals(String inBloodPressure, double inBodyTemp, double inWeight, double inHeight) {
-		bloodPressure = inBloodPressure;
-		bodyTemp = inBodyTemp;
-		weight = inWeight;
-		height = inHeight;
+		bloodPressure.add(inBloodPressure);
+		bodyTemp.add(inBodyTemp);
+		weight.add(inWeight);
+		height.add(inHeight);
 	}
 	
 	public String getInsurance() {
@@ -72,15 +72,15 @@ public class Patient extends User {
 		return emailAddress;
 	}
 	
-	public String getAllergens() {
+	public ArrayList<String> getAllergens() {
 		return allergens;
 	}
 	
-	public String getHealthConcerns() {
+	public ArrayList<String> getHealthConcerns() {
 		return healthConcerns;
 	}
 	
-	public String getPhysicals() {
+	public ArrayList<String> getPhysicals() {
 		return physicals;
 	}
 	
@@ -88,19 +88,19 @@ public class Patient extends User {
 		return age;
 	}
 	
-	public String getBloodPressure() {
+	public ArrayList<String> getBloodPressure() {
 		return bloodPressure;
 	}
 	
-	public double getBodyTemp() {
+	public ArrayList<double> getBodyTemp() {
 		return bodyTemp;
 	}
 	
-	public double getWeight() {
+	public ArrayList<double> getWeight() {
 		return weight;
 	}
 	
-	public double getHeight(){
+	public ArrayList<double> getHeight(){
 		return height;
 	}
 	
