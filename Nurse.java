@@ -3,68 +3,70 @@ package application;
 import java.io.Serializable;
 import java.util.*;
 
-
 public class Nurse extends User implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	private String nurseName;
-	Doctor nurseDoctor;
-	
-	protected ArrayList<Patient> nPatients;
-	
-	//add nurse constructor that will add a new nurse to the arraylist in the doctor class
-	public Nurse (String username, String password, String name, Doctor doc) {
+	private Doctor nurseDoctor;
+
+	protected ArrayList<Patient> patients;
+
+	// add nurse constructor that will add a new nurse to the arraylist in the
+	// doctor class
+	public Nurse(String username, String password, String name, Doctor doctor) {
 		super(username, password);
+		patients = new ArrayList<Patient>();
+		
 		nurseName = name;
-		nPatients = new ArrayList<Patient>();
-		nurseDoctor = doc;	
+		nurseDoctor = doctor;
 	}
-	
-	public void message (String userName, Message newMessage) {
-		
-		Message newMessage = new Message(text, insubject, inSender, inRec);
-		boolean foundUser = false; 
-		
-		for(int i = 0; i < nPatients.size(); i++) {
-			Patient pt = nPatients.get(i);
-			if(pt.getUsername().equals(recipientUserName)) {
-				foundUser = true;
-				message
+
+	public void message(String username, Message message) {
+
+		this.messageHistory.add(message);
+
+		if (username.equals(nurseDoctor.getUsername())) {
+			nurseDoctor.getMessageHistory().add(message);
+		}
+
+		for (int i = 0; i < patients.size(); i++) {
+			if (username.equals(patients.get(i).getUsername())) {
+				patients.get(i).getMessageHistory().add(message);
 			}
 		}
-		
-		
-		
 	}
-	
+
 	public void createPatientAccount(String userName, String password, String inBirth, Doctor doc, Nurse ptNurse) {
 		Patient newPatient = new Patient(userName, password, inBirth);
 		addPatient(newPatient);
 	}
-	
+
 	public void addPatient(Patient inPatient) {
-		nPatients.add(inPatient);
+		patients.add(inPatient);
 	}
-	
-	public void addPatientData(String inUser, String inBloodPressure, double inBodyTemperature, String inWeight, double inHeight, String inAllergens, String inHealth) {
+
+	public void addPatientData(String inUser, String inBloodPressure, double inBodyTemp, double inWeight, double inHeight, String inAllergens, String inHealth) {
 		
-		// my nurse, my doctor 
-		//patient.mynurse = patient object
-		for(int i = 0; i < nPatients.size(); i++) {
-			if()
-			
+		Patient patient;
+		
+		for(int i = 0; i < patients.size(); i++) {
+			if(inUser.equals(patients.get(i).getUsername())) {
+				patient = patients.get(i);
+				break;
+			}
 		}
-		inPatient.Vitals.bloodPressure = inBloodPressure;
-		inPatient.Vitals.bodyTemp = inBodyTemperature;
-		inPatient.Vitals.weight = inWeight;
-		inPatient.Vitals.height = inHeight;
-		inPatient.allergens.add(inAllergens);
-		inPatient.healthConcerns.add(inHealth);
+		
+		patient.getBloodPressure().add(inBloodPressure);
+		patient.getBodyTemp().add(inBodyTemp);
+		patient.getWeight().add(inWeight);
+		patient.getHeight().add(inHeight);
+		patient.getAllergens().add(inAllergens);
+		patient.getHealthConcerns().add(inHealth);
 	}
-	
+
 	public ArrayList<Patient> getPatients() {
-		return nPatients;
+		return patients;
 	}
-	
+
 }
