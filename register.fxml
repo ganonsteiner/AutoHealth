@@ -5,13 +5,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Control2">
    <children>
       <Label layoutX="228.0" layoutY="54.0" text="AutoHealth Create Account" />
       <Label layoutX="107.0" layoutY="120.0" text="Username:" />
       <Label layoutX="108.0" layoutY="192.0" text="Password:" />
       <TextField fx:id="userName" layoutX="177.0" layoutY="116.0" />
       <TextField layoutX="177.0" layoutY="188.0" />
-      <Button layoutX="251.0" layoutY="301.0" mnemonicParsing="false" text="Create Account" />
+      <Button layoutX="202.0" layoutY="326.0" mnemonicParsing="false" onAction="#register" text="Create Account" />
+      <Label layoutX="111.0" layoutY="255.0" text="Birthday:" />
+      <TextField layoutX="176.0" layoutY="251.0" promptText="mm/dd/yyyy" />
    </children>
 </Pane>
