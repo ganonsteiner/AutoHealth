@@ -9,8 +9,9 @@ public class Doctor implements Serializable
 	private ArrayList<Nurse> nNurses;
 	private String docName;
 
-	public Doctor(String inName)
+	public Doctor(String username, String password, String inName)
 	{
+		super(username, password);
 		docName = inName;
 		nNurses = new ArrayList<Nurse>();
 	}
