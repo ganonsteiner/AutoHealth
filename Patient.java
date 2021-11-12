@@ -1,3 +1,4 @@
+
 package application;
 import java.util.*;
 import java.io.Serializable;
@@ -6,18 +7,18 @@ public class Patient extends User implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	ArrayList<String> bloodPressure;
-	ArrayList<Double> bodyTemp;
-	ArrayList<Double> weight;
-	ArrayList<Double> height;
-	String birthday;
-	String insurance;
-	String phoneNumber;
-	String emailAddress;
-	ArrayList<String> allergens;
-	ArrayList<String> healthConcerns;
-	ArrayList<String> physicals;
-	int age;
+	private ArrayList<String> bloodPressure;
+	private ArrayList<Double> bodyTemp;
+	private ArrayList<Double> weight;
+	private ArrayList<Double> height;
+	private String birthday;
+	private String insurance;
+	private String phoneNumber;
+	private String emailAddress;
+	private ArrayList<String> allergens;
+	private ArrayList<String> healthConcerns;
+	private ArrayList<String> physicals;
+	private int age;
 
 	Doctor myDoctor;
 	Nurse myNurse;
