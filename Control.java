@@ -54,30 +54,54 @@ public class Control {
 	   scene = new Scene(root);
 	   stage.setScene(scene);
 	   stage.show();
-	   }
-	   else if(userN.equalsIgnoreCase(nurseUser) && pass.equals(nursePass)) {
-		   FXMLLoader loader = new FXMLLoader(getClass().getResource("Nurse.fxml"));
-		   root = loader.load();
+	   } else {
+
+			Nurse tempNurse;
+			Patient tempPatient;
+
+			for (int i = 0; i < doctor1.getNurses().size(); i++) {
+
+				tempNurse = doctor1.getNurses().get(i);
+
+				for (int j = 0; j < tempNurse.getPatients().size(); j++) {
+
+					tempPatient = tempNurse.getPatients().get(j);
+
+					if (tempPatient.getUsername().equals(userN) && tempPatient.getPassword().equals(pass)) {
+						Patient currentUser = tempPatient;
+						System.out.println("patient acquired");
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("Patient.fxml"));
+						root = loader.load();
+						stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+						scene = new Scene(root);
+						stage.setScene(scene);
+						stage.show();
+					}
+				}
+		}
+// 	   else if(userN.equalsIgnoreCase(nurseUser) && pass.equals(nursePass)) {
+// 		   FXMLLoader loader = new FXMLLoader(getClass().getResource("Nurse.fxml"));
+// 		   root = loader.load();
 		   
-		   //Control2 scene2Controller = loader.getController();
-		   //scene2Controller.changeChoiceBox(nurse1.getPatients());
+// 		   //Control2 scene2Controller = loader.getController();
+// 		   //scene2Controller.changeChoiceBox(nurse1.getPatients());
 		   
-		   stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		   scene = new Scene(root);
-		   stage.setScene(scene);
-		   stage.show();
-		}else {
-				   FXMLLoader loader = new FXMLLoader(getClass().getResource("Patient.fxml"));
-				   root = loader.load();
+// 		   stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+// 		   scene = new Scene(root);
+// 		   stage.setScene(scene);
+// 		   stage.show();
+// 		}else {
+// 				   FXMLLoader loader = new FXMLLoader(getClass().getResource("Patient.fxml"));
+// 				   root = loader.load();
 				   
-//				   Control2 scene2Controller = loader.getController();
-//				   scene2Controller.displayName(userN);
+// 				   Control2 scene2Controller = loader.getController();
+// 				   scene2Controller.displayName(userN);
 				   
-				   stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-				   scene = new Scene(root);
-				   stage.setScene(scene);
-				   stage.show();
-				   }
+// 				   stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+// 				   scene = new Scene(root);
+// 				   stage.setScene(scene);
+// 				   stage.show();
+// 				   }
 		}
    
    public void signUp(ActionEvent event) throws IOException {
