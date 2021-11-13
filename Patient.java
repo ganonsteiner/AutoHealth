@@ -1,5 +1,4 @@
 package application;
-
 import java.util.*;
 import java.io.Serializable;
 
@@ -18,15 +17,18 @@ public class Patient extends User implements Serializable{
 	private ArrayList<String> allergens;
 	private ArrayList<String> healthConcerns;
 	private ArrayList<String> physicals;
-	private int age;
+	int age;
 
-	Doctor myDoctor;
-	Nurse myNurse;
+	private Doctor myDoctor;
+	private Nurse myNurse;
 
-	Patient(String username, String password, String birthday) {
+	Patient(String username, String password, String inBirth, Nurse inNurse) {
 
 		super(username, password);
-		this.birthday = birthday;
+		birthday = inBirth;
+		myNurse = inNurse;
+		myDoctor = inNurse.getDoctor();
+		myNurse.getPatients().add(this);
 
 		bloodPressure = new ArrayList<>();
 		bodyTemp = new ArrayList<>();
@@ -131,8 +133,7 @@ public class Patient extends User implements Serializable{
 		}
 		else
 		{
-			// invalid recipient... gotta handle this somehow
-			// could have this return false and make an error message pop up
+			throw new IllegalStateException("Invalid recipent");
 		}
 	}
 }
