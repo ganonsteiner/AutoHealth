@@ -1,9 +1,12 @@
 package application;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
@@ -22,6 +25,8 @@ public class Control {
 	TextField birthday;
 	@FXML
 	Label welcome;
+	@FXML
+	ChoiceBox<String> cBox;
     TextField newUser;
     
     
@@ -36,10 +41,11 @@ public class Control {
 	private String nurseUser = "jbiggums123";
 	private Doctor doctor1 = new Doctor(doctorUser, doctorPass, doctorName );
 	private Nurse nurse1 = new Nurse(nurseUser, nursePass, nurseName, doctor1);
-	
+	saveSystem system = new saveSystem();
+	Patient patient1;
 	
 	public void register(ActionEvent event) throws IOException {
-		   
+		
 		  String name = userName.getText();
 		  String pass = newPass.getText();
 		  String birth = birthday.getText();
@@ -47,8 +53,8 @@ public class Control {
 		   FXMLLoader loader = new FXMLLoader(getClass().getResource("Welcome.fxml"));
 		   root = loader.load();
 		   
-		  Patient patient1 = new Patient(name, pass, birth, nurse1);
-		  System.out.print(nurse1.getPatients().get(0).getPassword());
+		 patient1 = new Patient(name, pass, birth, nurse1);
+		 system.saveFile(doctor1);
 		  Control scene3Controller = loader.getController();
 		  scene3Controller.welcomeMessage(patient1.getUsername());
 		  
@@ -59,10 +65,18 @@ public class Control {
 		   stage.setScene(scene);
 		   stage.show();
 		}
+	
+	public  void changeChoiceBox(Nurse  nurse1)  
+    {
+    	for(int i = 0; i < nurse1.getPatients().size(); i++) {
+    		cBox.setValue(nurse1.getPatients().get(i).getUsername());
+    	}
+    }
   
    public void login(ActionEvent event) throws IOException {
 	   String pass = passWord.getText();
 	   String userN = userName.getText();
+	   doctor1 = system.loadFile();
 	   
 	   
 	   if(userN.equalsIgnoreCase(doctorUser) && pass.equals(doctorPass)) {
@@ -77,25 +91,26 @@ public class Control {
 	   scene = new Scene(root);
 	   stage.setScene(scene);
 	   stage.show();
-	   }
-	   else if(userN.equalsIgnoreCase(nurseUser) && pass.equals(nursePass)) {
-		   FXMLLoader loader = new FXMLLoader(getClass().getResource("Nurse.fxml"));
-		   root = loader.load();
-		   
-		   //Control2 scene2Controller = loader.getController();
-		   //scene2Controller.changeChoiceBox(nurse1.getPatients());
-		   
-		   stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		   scene = new Scene(root);
-		   stage.setScene(scene);
-		   stage.show();
-		}else {
+	   }else {
 			Patient currentUser;
 			Nurse tempNurse;
+			
 			
 			for(int i = 0; i < doctor1.getNurses().size(); i++) {
 				
 				tempNurse = doctor1.getNurses().get(i);
+				if(tempNurse.getUsername().equals(userN) && tempNurse.getPassword().equals(pass)) {
+					  FXMLLoader loader = new FXMLLoader(getClass().getResource("Nurse.fxml"));
+					   root = loader.load();
+					   
+					   Control scene2Controller = loader.getController();
+					   scene2Controller.changeChoiceBox(tempNurse);
+					   
+					   stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+					   scene = new Scene(root);
+					   stage.setScene(scene);
+					   stage.show();
+				}
 				
 				for(int j = 0; j < tempNurse.getPatients().size(); j++) {
 					
