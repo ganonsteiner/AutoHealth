@@ -20,7 +20,8 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                      <children>
                         <TextArea layoutX="2.0" layoutY="3.0" prefHeight="360.0" prefWidth="92.0" text="&#10;&#10;&#10;&#10;Here will display&#10;Patient Name,&#10;Phone No,     " />
-                        <ChoiceBox layoutX="2.0" layoutY="2.0" prefHeight="25.0" prefWidth="92.0" />
+                        <ChoiceBox fx:id="cBox" layoutX="2.0" layoutY="2.0" prefHeight="25.0" prefWidth="92.0" />
+                        <Button layoutX="20.0" layoutY="316.0" mnemonicParsing="false" onAction="#backToLogin" text="Log out" />
                      </children>
                   </AnchorPane>
               </items>
@@ -54,7 +55,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Button layoutX="162.0" layoutY="146.0" mnemonicParsing="false" onAction="#signUp" text="Go to create account" />
+                              <Button layoutX="162.0" layoutY="146.0" mnemonicParsing="false" onAction="#signUpfromDocNurse" text="Go to create account" />
                            </children>
                         </AnchorPane>
                   </content>
@@ -101,3 +102,4 @@
          </children></AnchorPane>
   </items>
 </SplitPane>
+
