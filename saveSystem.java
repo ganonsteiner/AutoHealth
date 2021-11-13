@@ -41,11 +41,8 @@ public class saveSystem
 	{
 		try
 		{
-			FileInputStream inFile = new FileInputStream(new File("save_file.txt"));
-			System.out.println("first line is ok");
+			FileInputStream inFile = new FileInputStream("save_file.txt");
 			ObjectInputStream inStream = new ObjectInputStream(inFile);
-			System.out.println("second line is ok");
-			//Object obj = inStream.readObject();
 			Object obj = inStream.readObject();
 			System.out.println("The Object has been read from the file");
 			inStream.close();
