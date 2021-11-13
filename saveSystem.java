@@ -1,3 +1,4 @@
+//package application;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -36,14 +37,16 @@ public class saveSystem
         }
 	}
 
-	public Doctor loadFile()
+	public Object loadFile()
 	{
 		try
 		{
 			FileInputStream inFile = new FileInputStream(new File("save_file.txt"));
+			System.out.println("first line is ok");
 			ObjectInputStream inStream = new ObjectInputStream(inFile);
+			System.out.println("second line is ok");
 			//Object obj = inStream.readObject();
-			Doctor obj = (Doctor)inStream.readObject();
+			Object obj = inStream.readObject();
 			System.out.println("The Object has been read from the file");
 			inStream.close();
 			return obj;
