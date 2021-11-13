@@ -4,6 +4,7 @@ import java.io.IOException;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,12 @@ public class Control {
 	TextField passWord;
 	@FXML
 	TextField userName;
+	@FXML
+	TextField newPass;
+	@FXML 
+	TextField birthday;
+	@FXML
+	Label welcome;
     TextField newUser;
     
     
@@ -52,8 +59,8 @@ public class Control {
 		   FXMLLoader loader = new FXMLLoader(getClass().getResource("Nurse.fxml"));
 		   root = loader.load();
 		   
-		   Control2 scene2Controller = loader.getController();
-		   scene2Controller.changeChoiceBox(nurse1.getPatients());
+		   //Control2 scene2Controller = loader.getController();
+		   //scene2Controller.changeChoiceBox(nurse1.getPatients());
 		   
 		   stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		   scene = new Scene(root);
@@ -80,7 +87,7 @@ public class Control {
 	   FXMLLoader loader = new FXMLLoader(getClass().getResource("register.fxml"));
 	   root = loader.load();
 	   
-	   Control2 scene2Controller = loader.getController();
+	   Control scene2Controller = loader.getController();
 	   scene2Controller.displayName(name);
 	   
 	   stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -88,6 +95,61 @@ public class Control {
 	   stage.setScene(scene);
 	   stage.show();
 	   }
+	public void register(ActionEvent event) throws IOException {
+		   
+		  String name = userName.getText();
+		  String pass = newPass.getText();
+		  String birth = birthday.getText();
+		
+		   FXMLLoader loader = new FXMLLoader(getClass().getResource("Welcome.fxml"));
+		   root = loader.load();
+		   
+		  Patient patient1 = new Patient(name, pass, birth, nurse1);
+		  
+		  Control scene3Controller = loader.getController();
+		  scene3Controller.welcomeMessage(patient1.getUsername());
+		  
+		  
+		   
+		   stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		   scene = new Scene(root);
+		   stage.setScene(scene);
+		   stage.show();
+		}
+	   public  void displayName(String userName)  
+	    {
+	    	this.userName.setText(userName);
+	    }
+		 public void signUpfromDocNurse(ActionEvent event) throws IOException {
+			   
+			   
+				
+			   FXMLLoader loader = new FXMLLoader(getClass().getResource("register.fxml"));
+			   root = loader.load();
+			  
+			   
+			   stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			   scene = new Scene(root);
+			   stage.setScene(scene);
+			   stage.show();
+			   }
+		 public  void welcomeMessage(String username) 
+		 {
+		    		welcome.setText("Welcome to AutoHealth Inc: " + username);	
+		 }
+	 
+	  public void backToLogin(ActionEvent event) throws IOException {
+		  
+		
+		   FXMLLoader loader = new FXMLLoader(getClass().getResource("Main.fxml"));
+		   root = loader.load();
+		   
+
+		   
+		   stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		   scene = new Scene(root);
+		   stage.setScene(scene);
+		   stage.show();
+		   }
 }
   
-
