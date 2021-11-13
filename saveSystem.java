@@ -37,16 +37,17 @@ public class saveSystem
         }
 	}
 
-	public Object loadFile()
+	public Doctor loadFile()
 	{
 		try
 		{
 			FileInputStream inFile = new FileInputStream("save_file.txt");
 			ObjectInputStream inStream = new ObjectInputStream(inFile);
 			Object obj = inStream.readObject();
+			Doctor docBoi = (Doctor) obj;
 			System.out.println("The Object has been read from the file");
 			inStream.close();
-			return obj;
+			return docBoi;
 	    }
 		catch (FileNotFoundException e)
 		{
