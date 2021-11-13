@@ -20,6 +20,7 @@ public class Nurse extends User implements Serializable {
 		
 		nurseName = name;
 		nurseDoctor = doctor;
+		nurseDoctor.addNurse(this);
 	}
 
 	public void message(String username, Message message) {
@@ -37,8 +38,8 @@ public class Nurse extends User implements Serializable {
 		}
 	}
 
-	public void createPatientAccount(String userName, String password, String inBirth, Doctor doc, Nurse ptNurse) {
-		Patient newPatient = new Patient(userName, password, inBirth);
+	public void createPatientAccount(String userName, String password, String inBirth,Nurse ptNurse) {
+		Patient newPatient = new Patient(userName, password, inBirth, this);
 		addPatient(newPatient);
 	}
 
@@ -48,7 +49,7 @@ public class Nurse extends User implements Serializable {
 
 	public void addPatientData(String inUser, String inBloodPressure, double inBodyTemp, double inWeight, double inHeight, String inAllergens, String inHealth) {
 		
-		Patient patient;
+		Patient patient = null;
 		
 		for(int i = 0; i < patients.size(); i++) {
 			if(inUser.equals(patients.get(i).getUsername())) {
@@ -63,6 +64,10 @@ public class Nurse extends User implements Serializable {
 		patient.getHeight().add(inHeight);
 		patient.getAllergens().add(inAllergens);
 		patient.getHealthConcerns().add(inHealth);
+	}
+	
+	public Doctor getDoctor() { 
+		return nurseDoctor;
 	}
 
 	public ArrayList<Patient> getPatients() {
