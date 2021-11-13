@@ -54,11 +54,16 @@ public class saveSystem
 			System.out.println("File not found");
 			return null;
 		}
-		catch (IOException e)
-		{
-			System.out.println("Error initializing stream");
-			return null;
+		catch (IOException | ClassNotFoundException ex) {
+			System.out.println("Class not found exception maybe");
+		    ex.printStackTrace();
+		    return null;
 		}
+		//catch (IOException e)
+		//{
+		//	System.out.println("Error initializing stream");
+		//	return null;
+		//}
 		catch (Exception ex)
 		{
 			ex.printStackTrace();
