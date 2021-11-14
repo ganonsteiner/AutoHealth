@@ -33,7 +33,7 @@
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                      <children>
-                        <TextField editable="false" layoutX="1.0" layoutY="4.0" prefHeight="47.0" prefWidth="176.0" text="Patient Information:" />
+                        <TextField editable="false" layoutX="1.0" layoutY="4.0" prefHeight="47.0" prefWidth="176.0" text="Patient Information" />
                         <TextArea fx:id="contact" editable="false" layoutX="1.0" layoutY="51.0" prefHeight="36.0" prefWidth="190.0" promptText="Contact Information" />
                         <TextArea fx:id="insurance" editable="false" layoutY="86.0" prefHeight="37.0" prefWidth="186.0" promptText="Insurance Information" />
                         <TextArea fx:id="pharmacy" editable="false" layoutX="-1.0" layoutY="123.0" prefHeight="49.0" prefWidth="177.0" promptText="Pharmacy Information" />
@@ -48,12 +48,12 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TextArea fx:id="pMed" editable="false" layoutX="108.0" layoutY="12.0" prefHeight="57.0" prefWidth="244.0" promptText="Patient's past medical history. (Read only)" />
-                              <Text layoutX="24.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Past Medical History:" wrappingWidth="108.96759033203125" />
-                              <TextArea fx:id="pPhys" editable="false" layoutX="112.0" layoutY="119.0" prefHeight="73.0" prefWidth="244.0" promptText="Patient's physical test. (Read only)" />
-                              <Text layoutX="14.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Physical Test:" wrappingWidth="74.89599609375" />
-                              <TextArea fx:id="pDia" editable="false" layoutX="112.0" layoutY="233.0" prefHeight="91.0" prefWidth="244.0" promptText="Patient's diagnosis. (Read only)" />
-                              <Text layoutX="25.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diagnosis:" />
+                              <TextArea fx:id="pMed" editable="false" layoutX="108.0" layoutY="12.0" prefHeight="57.0" prefWidth="244.0" promptText="Vitals from most recent visit." />
+                              <Text layoutX="24.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vitals" wrappingWidth="108.96759033203125" />
+                              <TextArea fx:id="pPhys" editable="false" layoutX="112.0" layoutY="119.0" prefHeight="73.0" prefWidth="244.0" promptText="Physical from most recent visit." />
+                              <Text layoutX="14.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Physical" wrappingWidth="74.89599609375" />
+                              <TextArea fx:id="pDia" editable="false" layoutX="112.0" layoutY="233.0" prefHeight="91.0" prefWidth="244.0" promptText="Health concerns from most recent visit." />
+                              <Text layoutX="14.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Health Concerns" />
                            </children>
                         </AnchorPane>
                   </content>
@@ -62,20 +62,20 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Text layoutX="26.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Visit:" wrappingWidth="108.96759033203125">
+                              <Text layoutX="26.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vitals History" wrappingWidth="108.96759033203125">
                                  <font>
                                     <Font size="12.0" />
                                  </font>
                               </Text>
-                              <TextArea fx:id="date1" editable="false" layoutX="112.0" layoutY="41.0" prefHeight="97.0" prefWidth="244.0" />
-                              <TextArea fx:id="date2" editable="false" layoutX="113.0" layoutY="145.0" prefHeight="97.0" prefWidth="244.0" />
-                              <TextArea fx:id="date3" editable="false" layoutX="115.0" layoutY="254.0" prefHeight="97.0" prefWidth="244.0" />
-                              <Text layoutX="25.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Visit:" wrappingWidth="108.96759033203125">
+                              <TextArea fx:id="date1" editable="false" layoutX="112.0" layoutY="41.0" prefHeight="97.0" prefWidth="244.0" promptText="Vitals from all visits." />
+                              <TextArea fx:id="date2" editable="false" layoutX="113.0" layoutY="145.0" prefHeight="97.0" prefWidth="244.0" promptText="Physicals from all visits." />
+                              <TextArea fx:id="date3" editable="false" layoutX="115.0" layoutY="254.0" prefHeight="97.0" prefWidth="244.0" promptText="Health concerns from all visits." />
+                              <Text layoutX="25.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Physicals History" wrappingWidth="108.96759033203125">
                                  <font>
                                     <Font size="12.0" />
                                  </font>
                               </Text>
-                              <Text layoutX="26.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Visit:" wrappingWidth="112.24444580078125">
+                              <Text layoutX="-3.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Health Concerns History" wrappingWidth="141.24444580078125">
                                  <font>
                                     <Font size="12.0" />
                                  </font>
