@@ -1,4 +1,3 @@
-
 package application;
 
 import java.io.IOException;
@@ -127,6 +126,7 @@ public class Control {
 				   tempPatient.setEmail(nEmail);
 				   tempPatient.setInsurance(nInsurance);
 				   tempPatient.setPharmacy(nPharm);
+				   system.saveFile(doctor1);
 				   
 				   FXMLLoader loader = new FXMLLoader(getClass().getResource("Patient.fxml"));
 				   root = loader.load();
@@ -203,6 +203,7 @@ public class Control {
 						   Control scenePatController = loader.getController();
 						   scenePatController.displayFrontpage("yes", "no", "ok", userN);
 						   scenePatController.displayDates("date1","date2","date3");
+						   scenePatController.displayInfo(tempPatient.getEmail(), tempPatient.getInsurance(), tempPatient.getPharmacy());
 						   
 						   stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 						   scene = new Scene(root);
@@ -285,3 +286,5 @@ public class Control {
 		   }
 }
   
+
+
