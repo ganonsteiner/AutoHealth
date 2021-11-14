@@ -1,3 +1,4 @@
+
 package application;
 
 import java.io.IOException;
@@ -42,9 +43,18 @@ public class Control {
 	TextArea pPhys;
 	@FXML 
 	TextArea pDia;
+	@FXML
 	Label welcome;
+	@FXML 
+	TextArea date1;
+	@FXML 
+	TextArea date2;
+	@FXML 
+	TextArea date3;
 	@FXML
 	Label invalid;
+	@FXML
+	Label realName;
 	@FXML
 	ChoiceBox<String> cBox;
     TextField newUser;
@@ -94,7 +104,7 @@ public class Control {
     	}
     }
 	
-	public void displayInfo(String insur, String email, String pharm) {
+	public void displayInfo(String email, String insur, String pharm) {
 		contact.setText(email);
 		insurance.setText(insur);
 		pharmacy.setText(pharm);
@@ -106,24 +116,25 @@ public class Control {
 		String nInsurance = newInsurance.getText();
 		String nPharm = newPharmacy.getText();
 		Nurse tempNurse;
+		doctor1 = system.loadFile();
 		
 		
-//		for(int i = 0; i < doctor1.getNurses().size(); i++) {
-//			
-//			System.out.println(userN);
-//			tempNurse = doctor1.getNurses().get(i);
-//			for(int j = 0; j < tempNurse.getPatients().size(); j++) {
-//				Patient tempPatient = tempNurse.getPatients().get(j);
-//				if(tempPatient.getUsername().equals(userN)) {
-//				   tempPatient.setEmail(nEmail);
-//				   tempPatient.setInsurance(nInsurance);
-//				   tempPatient.setPharmacy(nPharm);
+		for(int i = 0; i < doctor1.getNurses().size(); i++) {
+			tempNurse = doctor1.getNurses().get(i);
+			for(int j = 0; j < tempNurse.getPatients().size(); j++) {
+				Patient tempPatient = tempNurse.getPatients().get(j);
+				if(tempPatient.getUsername().equals(doctor1.getCurrUser())) {
+				   tempPatient.setEmail(nEmail);
+				   tempPatient.setInsurance(nInsurance);
+				   tempPatient.setPharmacy(nPharm);
 				   
 				   FXMLLoader loader = new FXMLLoader(getClass().getResource("Patient.fxml"));
 				   root = loader.load();
 				   
 				   Control scene2Controller = loader.getController();
-				   scene2Controller.displayInfo(nEmail, nInsurance, nPharm);
+				   scene2Controller.displayInfo(tempPatient.getEmail(), tempPatient.getInsurance(), tempPatient.getPharmacy());
+				   scene2Controller.displayFrontpage("yes", "no", "ok", doctor1.getCurrUser());
+				   scene2Controller.displayDates("date1","date2","date3");
 				   
 				   
 				   stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -131,6 +142,9 @@ public class Control {
 				   stage.setScene(scene);
 				   stage.show();
 				}
+			}
+		}
+	}
 			
 		
 			
@@ -139,6 +153,8 @@ public class Control {
 	   String pass = passWord.getText();
 	   userN = userName.getText();
 	   doctor1 = system.loadFile();
+	   doctor1.setCurrUser(userN);
+	   system.saveFile(doctor1);
 	   
 	   
 	   if(userN.equalsIgnoreCase(doctorUser) && pass.equals(doctorPass)) {
@@ -185,7 +201,8 @@ public class Control {
 						   root = loader.load();
 						   
 						   Control scenePatController = loader.getController();
-						   scenePatController.displayExample("yes", "no", "ok");
+						   scenePatController.displayFrontpage("yes", "no", "ok", userN);
+						   scenePatController.displayDates("date1","date2","date3");
 						   
 						   stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 						   scene = new Scene(root);
@@ -203,10 +220,16 @@ public class Control {
 		}
    }
    
-   public void displayExample(String one, String two, String three) {
+   public void displayFrontpage(String one, String two, String three, String user) {
 	   pMed.setText(one);
 	   pDia.setText(three);
 	   pPhys.setText(two);
+	   realName.setText(user);
+   }   
+   public void displayDates(String one, String two, String three) {
+	   date1.setText(one);
+	   date2.setText(two);
+	   date3.setText(three);
    }
    
    public void signUp(ActionEvent event) throws IOException {
