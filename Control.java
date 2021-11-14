@@ -26,6 +26,8 @@ public class Control {
 	@FXML
 	Label welcome;
 	@FXML
+	Label invalid;
+	@FXML
 	ChoiceBox<String> cBox;
     TextField newUser;
     
@@ -129,6 +131,8 @@ public class Control {
 						   scene = new Scene(root);
 						   stage.setScene(scene);
 						   stage.show();
+					}else {
+						invalid.setText("Invalid username/password combo");
 					}
 		}
 			
