@@ -30,7 +30,30 @@ public class Control {
 	@FXML
 	ChoiceBox<String> cBox;
     TextField newUser;
+	
+	 // nurse text fields for input for vitals/healthconcerns/allergens
+    	@FXML
+    	TextField weight;
+    	@FXML
+    	TextField height;
+    	@FXML
+    	TextField bodyTemp;
+    	@FXML
+   	TextField bloodPress;
+   	@FXML 
+    	TextField ptUserName;
+    	@FXML 
+    	TextField healthConcerns;
+    	@FXML 
+    	TextField allergens;
     
+    	// nurse text fields for input for messages
+    	@FXML
+    	TextField nurseMessRec;
+    	@FXML
+    	TextField nurseMessSub;
+    	@FXML
+    	TextField nurseMessText;
     
 	public Stage stage;
 	private Parent root;
@@ -112,6 +135,16 @@ public class Control {
 					   scene = new Scene(root);
 					   stage.setScene(scene);
 					   stage.show();
+					
+					   double newWeight = Double.parseDouble(weight.getText());
+					   double newHeight = Double.parseDouble(height.getText());
+					   double newBodyTemp = Double.parseDouble(bodyTemp.getText()); 
+					   String newBloodPress = bloodPress.getText();
+					   String ptName = ptUserName.getText();
+					   String allergies = allergens.getText();
+					   String healthCon = healthConcerns.getText();
+					   
+					   tempNurse.addPatientData(ptName, newBloodPress, newBodyTemp, newWeight, newHeight, allergies, healthCon);
 				}
 				
 				for(int j = 0; j < tempNurse.getPatients().size(); j++) {
