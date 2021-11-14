@@ -61,6 +61,32 @@ public class Control {
 	Label realName;
 	@FXML
 	ChoiceBox<String> cBox;
+	
+	// nurse text fields for input for vitals/healthconcerns/allergens
+	@FXML
+	TextField weight;
+	@FXML
+	TextField height;
+	@FXML
+	TextField bodyTemp;
+	@FXML
+	TextField bloodPress;
+	@FXML 
+	TextField ptUserName;
+	@FXML 
+	TextField healthConcerns;
+	@FXML 
+	TextField allergens;
+
+	// nurse text fields for input for messages
+	@FXML
+	TextField nurseMessRec;
+	@FXML
+	TextField nurseMessSub;
+	@FXML
+	TextField nurseMessText;
+	
+	
     TextField newUser;
     
     
@@ -303,6 +329,46 @@ public class Control {
 		   stage.setScene(scene);
 		   stage.show();
 		   }
+}
+
+public void nurseSetInfo(ActionEvent event) throws IOException {
+		
+		Nurse tempNurse;
+		doctor1 = system.loadFile();
+		
+		double newWeight = Double.parseDouble(weight.getText());
+		double newHeight = Double.parseDouble(height.getText());
+		double newBodyTemp = Double.parseDouble(bodyTemp.getText()); 
+		String newBloodPress = bloodPress.getText();
+		String ptName = ptUserName.getText();
+		String allergies = allergens.getText();
+		String healthCon = healthConcerns.getText();
+		
+		for(int i = 0; i < doctor1.getNurses().size(); i++) {
+			tempNurse = doctor1.getNurses().get(i);
+			for(int j = 0; j < tempNurse.getPatients().size(); j++) {
+				Patient tempPatient = tempNurse.getPatients().get(j);
+				if(tempPatient.getUsername().equals(ptName)) {
+				   tempNurse.addPatientData(ptName, newBloodPress, newBodyTemp, newWeight, newHeight, allergies, healthCon);
+				   system.saveFile(doctor1);
+				   
+				   FXMLLoader loader = new FXMLLoader(getClass().getResource("Patient.fxml"));
+				   root = loader.load();
+				   
+				   Control scene2Controller = loader.getController();
+				   scene2Controller.displayInfo(tempPatient.getEmail(), tempPatient.getInsurance(), tempPatient.getPharmacy());
+				   scene2Controller.displayFrontpage("yes", "no", "ok", doctor1.getCurrUser());
+				   scene2Controller.displayDates("date1","date2","date3");
+				   
+				   
+				   stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+				   scene = new Scene(root);
+				   stage.setScene(scene);
+				   stage.show();
+			}
+		}
+	}
+		
 }
   
 
