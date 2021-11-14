@@ -36,6 +36,12 @@ public class Control {
 	TextArea insurance;
 	@FXML 
 	TextArea pharmacy;
+	@FXML 
+	TextArea pMed;
+	@FXML 
+	TextArea pPhys;
+	@FXML 
+	TextArea pDia;
 	Label welcome;
 	@FXML
 	Label invalid;
@@ -178,8 +184,8 @@ public class Control {
 						   FXMLLoader loader = new FXMLLoader(getClass().getResource("Patient.fxml"));
 						   root = loader.load();
 						   
-//						   Control2 scene2Controller = loader.getController();
-//						   scene2Controller.displayName(userN);
+						   Control scenePatController = loader.getController();
+						   scenePatController.displayExample("yes", "no", "ok");
 						   
 						   stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 						   scene = new Scene(root);
@@ -195,6 +201,12 @@ public class Control {
 			
 				   }
 		}
+   }
+   
+   public void displayExample(String one, String two, String three) {
+	   pMed.setText(one);
+	   pDia.setText(three);
+	   pPhys.setText(two);
    }
    
    public void signUp(ActionEvent event) throws IOException {
