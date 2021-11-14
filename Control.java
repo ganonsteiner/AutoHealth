@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
@@ -17,9 +18,13 @@ import javafx.stage.Stage;
 
 public class Control {
 	@FXML
-	TextField passWord;
+	PasswordField passWord;
 	@FXML
 	TextField userName;
+	@FXML
+	PasswordField nPass;
+	@FXML
+	TextField currPass;
 	@FXML
 	TextField newPass;
 	@FXML 
@@ -77,7 +82,7 @@ public class Control {
 	public void register(ActionEvent event) throws IOException {
 		
 		  String name = userName.getText();
-		  String pass = newPass.getText();
+		  String pass = nPass.getText();
 		  String birth = birthday.getText();
 		
 		   FXMLLoader loader = new FXMLLoader(getClass().getResource("Welcome.fxml"));
@@ -146,13 +151,27 @@ public class Control {
 		}
 	}
 			
-		
+	public void showPassword(ActionEvent event) throws IOException	{
+		String myPass = nPass.getText();
+		currPass.setText(myPass);
+	}
+	
+	public void hidePassword(ActionEvent event) throws IOException	{
+		currPass.setText(" ");
+	}
 			
   
    public void login(ActionEvent event) throws IOException {
 	   String pass = passWord.getText();
 	   userN = userName.getText();
-	   doctor1 = system.loadFile();
+	   if(system.loadFile() == null)
+       {
+
+       }
+       else
+       {
+           doctor1 = system.loadFile();
+       }
 	   doctor1.setCurrUser(userN);
 	   system.saveFile(doctor1);
 	   
