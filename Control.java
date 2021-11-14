@@ -32,7 +32,7 @@ public class Control {
     TextField newUser;
 	
 	 // nurse text fields for input for vitals/healthconcerns/allergens
-    	@FXML
+    	/*@FXML
     	TextField weight;
     	@FXML
     	TextField height;
@@ -53,7 +53,7 @@ public class Control {
     	@FXML
     	TextField nurseMessSub;
     	@FXML
-    	TextField nurseMessText;
+    	TextField nurseMessText; */
     
 	public Stage stage;
 	private Parent root;
@@ -136,7 +136,7 @@ public class Control {
 					   stage.setScene(scene);
 					   stage.show();
 					
-					   double newWeight = Double.parseDouble(weight.getText());
+					   /*double newWeight = Double.parseDouble(weight.getText());
 					   double newHeight = Double.parseDouble(height.getText());
 					   double newBodyTemp = Double.parseDouble(bodyTemp.getText()); 
 					   String newBloodPress = bloodPress.getText();
@@ -144,7 +144,7 @@ public class Control {
 					   String allergies = allergens.getText();
 					   String healthCon = healthConcerns.getText();
 					   
-					   tempNurse.addPatientData(ptName, newBloodPress, newBodyTemp, newWeight, newHeight, allergies, healthCon);
+					   tempNurse.addPatientData(ptName, newBloodPress, newBodyTemp, newWeight, newHeight, allergies, healthCon);*/
 				}
 				
 				for(int j = 0; j < tempNurse.getPatients().size(); j++) {
