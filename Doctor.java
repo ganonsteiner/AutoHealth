@@ -8,6 +8,7 @@ public class Doctor extends User implements Serializable
 
 	private ArrayList<Nurse> nNurses;
 	private String docName;
+	private String currUser;
 
 	public Doctor(String username, String password, String inName)
 	{
@@ -62,6 +63,11 @@ public class Doctor extends User implements Serializable
 		}
 	}
 
+	public void setCurrUser(String inCurrUser)
+	{
+		currUser = inCurrUser;
+	}
+
 	public void sendPrescription(String inUser)
 	{
 		System.out.println("Prescirption has been sent!");
@@ -70,6 +76,11 @@ public class Doctor extends User implements Serializable
 	public String getName()
 	{
 		return docName;
+	}
+
+	public String getCurrUser()
+	{
+		return currUser;
 	}
 
 	public ArrayList<Nurse> getNurses()
