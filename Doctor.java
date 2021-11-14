@@ -92,4 +92,25 @@ public class Doctor extends User implements Serializable
 	{
 		return super.getMessageHistory();
 	}
+
+	public Patient getPatientFromDoc(String inName)
+	{
+		Patient foundPatient = null;
+		for(int i = 0; i < nNurses.size(); i ++)
+		{
+			for(int j = 0; j < nNurses.get(i).patients.size(); j++)
+			{
+				if(nNurses.get(i).patients.get(j).getUsername().equals(inName))
+				{
+					foundPatient = nNurses.get(i).patients.get(j);
+					break;
+				}
+			}
+			if(foundPatient != null)
+			{
+				break;
+			}
+		}
+		return foundPatient;
+	}
 }
