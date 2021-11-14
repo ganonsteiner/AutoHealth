@@ -1,3 +1,4 @@
+
 package application;
 
 import java.io.IOException;
@@ -74,7 +75,7 @@ public class Control {
 	@FXML 
 	TextField ptUserName;
 	@FXML 
-	TextField healthConcerns;
+	TextArea healthConcerns;
 	@FXML 
 	TextField allergens;
 
@@ -84,9 +85,9 @@ public class Control {
 	@FXML
 	TextField nurseMessSub;
 	@FXML
-	TextField nurseMessText;
+	TextArea nurseMessText;
 	
-	
+	@FXML
     TextField newUser;
     
     
@@ -161,11 +162,52 @@ public class Control {
 				   
 				   FXMLLoader loader = new FXMLLoader(getClass().getResource("Patient.fxml"));
 				   root = loader.load();
+				   Patient currentUser;
+				   currentUser = tempPatient;
+				   int lastIndex = currentUser.getHeight().size() - 1;
+
+					String currentMedHistory = "";
+					String currentPhyTest = "";
+					String currentHealthConcern = "";
+					
+
+					if (lastIndex >= 0) {
+						currentMedHistory = "Height: " + currentUser.getHeight().get(lastIndex) + "\n\tWeight: "
+								+ currentUser.getWeight().get(lastIndex) + "\n\tBlood Pressure: "
+								+ currentUser.getBloodPressure().get(lastIndex) + "\n\tBody Temperature: "
+								+ currentUser.getBodyTemp().get(lastIndex) + "\n\tAllergens: "
+								+ currentUser.getAllergens().get(lastIndex) + "\n";
+						currentPhyTest = "Physical: " + currentUser.getPhysicals().get(lastIndex) + "\n";
+						currentHealthConcern = "Health Concerns: " + currentUser.getHealthConcerns().get(lastIndex)
+								+ "\n";
+						;
+					}
+
+					
+
+					String medHistory = "";
+					String phyTest = "";
+					String healthConcerns = "";
+
+					for (int k = 0; k < currentUser.getPhysicals().size(); k++) {
+						medHistory += "Visit " + k + "\n\tHeight: " + currentUser.getHeight().get(k)
+								+ "\n\tWeight: " + currentUser.getWeight().get(k) + "\n\tBlood Pressure: "
+								+ currentUser.getBloodPressure().get(k) + "\n\tBody Temperature: "
+								+ currentUser.getBodyTemp().get(k) + "\n\tAllergens: "
+								+ currentUser.getAllergens().get(k) + "\n";
+						phyTest += "Visit " + k + ":" + "\n\tPhysical: " + currentUser.getPhysicals().get(k) + "\n";
+						healthConcerns += "Visit " + k + ":" + "\n\tHealth Concerns: "
+								+ currentUser.getHealthConcerns().get(k) + "\n";
+					}
+
 				   
 				   Control scene2Controller = loader.getController();
-				   scene2Controller.displayInfo(tempPatient.getEmail(), tempPatient.getInsurance(), tempPatient.getPharmacy());
-				   scene2Controller.displayFrontpage("yes", "no", "ok", doctor1.getCurrUser());
-				   scene2Controller.displayDates("date1","date2","date3");
+				   scene2Controller.displayFrontpage(currentMedHistory, currentPhyTest, currentHealthConcern,
+							doctor1.getCurrUser());
+					scene2Controller.displayDates(medHistory, phyTest, healthConcerns, doctor1.getCurrUser());
+
+					scene2Controller.displayInfo(tempPatient.getEmail(), tempPatient.getInsurance(),
+							tempPatient.getPharmacy());
 				   
 				   
 				   stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -239,7 +281,6 @@ public class Control {
 					
 					Patient tempPatient = tempNurse.getPatients().get(j);
 					
-					Patient tempPatient = tempNurse.getPatients().get(j);
 
 					if (tempPatient.getUsername().equals(userN) && tempPatient.getPassword().equals(pass)) {
 						currentUser = tempPatient;
@@ -268,7 +309,7 @@ public class Control {
 						}
 
 						scenePatController.displayFrontpage(currentMedHistory, currentPhyTest, currentHealthConcern,
-								userN);
+								doctor1.getCurrUser());
 
 						String medHistory = "";
 						String phyTest = "";
@@ -285,7 +326,7 @@ public class Control {
 									+ currentUser.getHealthConcerns().get(k) + "\n";
 						}
 
-						scenePatController.displayDates(medHistory, phyTest, healthConcerns);
+						scenePatController.displayDates(medHistory, phyTest, healthConcerns, doctor1.getCurrUser());
 
 						scenePatController.displayInfo(tempPatient.getEmail(), tempPatient.getInsurance(),
 								tempPatient.getPharmacy());
@@ -294,7 +335,7 @@ public class Control {
 						scene = new Scene(root);
 						stage.setScene(scene);
 						stage.show();
-   
+  
 					}else {
 						invalid.setText("Invalid username/password combo");
 					}
@@ -304,18 +345,19 @@ public class Control {
 			
 				   }
 		}
-   }
+  }
    
-   public void displayFrontpage(String one, String two, String three, String user) {
+   public void displayFrontpage(String one,String two,String three, String user) {
 	   pMed.setText(one);
-	   pDia.setText(three);
 	   pPhys.setText(two);
+	   pDia.setText(three);
 	   realName.setText(user);
    }   
-   public void displayDates(String one, String two, String three) {
+   public void displayDates(String one,String  two,String three, String user) {
 	   date1.setText(one);
 	   date2.setText(two);
 	   date3.setText(three);
+	   realName.setText(user);
    }
    
    public void signUp(ActionEvent event) throws IOException {
@@ -369,16 +411,16 @@ public class Control {
 		   stage.setScene(scene);
 		   stage.show();
 		   }
-}
+
 
 public void nurseSetInfo(ActionEvent event) throws IOException {
 		
 		Nurse tempNurse;
 		doctor1 = system.loadFile();
 		
-		double newWeight = Double.parseDouble(weight.getText());
-		double newHeight = Double.parseDouble(height.getText());
-		double newBodyTemp = Double.parseDouble(bodyTemp.getText()); 
+		String newWeight = weight.getText();
+		String newHeight = height.getText();
+		String newBodyTemp = bodyTemp.getText(); 
 		String newBloodPress = bloodPress.getText();
 		String ptName = ptUserName.getText();
 		String allergies = allergens.getText();
@@ -389,27 +431,38 @@ public void nurseSetInfo(ActionEvent event) throws IOException {
 			for(int j = 0; j < tempNurse.getPatients().size(); j++) {
 				Patient tempPatient = tempNurse.getPatients().get(j);
 				if(tempPatient.getUsername().equals(ptName)) {
-				   tempNurse.addPatientData(ptName, newBloodPress, newBodyTemp, newWeight, newHeight, allergies, healthCon);
+				   tempPatient.setBloodPressure(newBloodPress);
+				   tempPatient.setBodyTemp(newBodyTemp);
+				   tempPatient.setWeight(newWeight);
+				   tempPatient.setHeight(newHeight);
+				   tempPatient.setAllergies(allergies);
+				   tempPatient.setHealthCon(healthCon);
+				   System.out.println("saved");
 				   system.saveFile(doctor1);
-				   
-				   FXMLLoader loader = new FXMLLoader(getClass().getResource("Patient.fxml"));
+				   FXMLLoader loader = new FXMLLoader(getClass().getResource("Nurse.fxml"));
 				   root = loader.load();
-				   
-				   Control scene2Controller = loader.getController();
-				   scene2Controller.displayInfo(tempPatient.getEmail(), tempPatient.getInsurance(), tempPatient.getPharmacy());
-				   scene2Controller.displayFrontpage("yes", "no", "ok", doctor1.getCurrUser());
-				   scene2Controller.displayDates("date1","date2","date3");
-				   
+				  
 				   
 				   stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 				   scene = new Scene(root);
 				   stage.setScene(scene);
 				   stage.show();
+				  
 			}
 		}
 	}
+		 
 		
+ }
+public void clearFields() {
+	weight.setText(" ");
+	height.setText(" ");
+	bodyTemp.setText(" "); 
+	bloodPress.setText(" ");
+	ptUserName.setText(" ");
+	allergens.setText(" ");
+	healthConcerns.setText(" ");
+}
 }
   
-
 
