@@ -13,7 +13,7 @@
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                      <children>
-                        <Text layoutX="27.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Name" />
+                        <Text layoutX="27.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                         <TabPane layoutX="68.0" layoutY="-83.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
                             <Tab text="Untitled Tab 1">
@@ -28,14 +28,15 @@
                             </Tab>
                           </tabs>
                         </TabPane>
+                        <Label fx:id="realName" layoutX="27.0" layoutY="10.0" prefHeight="17.0" prefWidth="106.0" text="Label" />
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                      <children>
-                        <TextField layoutX="1.0" layoutY="4.0" prefHeight="47.0" prefWidth="176.0" text="Patient Information:" />
-                        <TextArea fx:id="contact" layoutX="1.0" layoutY="51.0" prefHeight="36.0" prefWidth="190.0" text="Contact Information" />
-                        <TextArea fx:id="insurance" layoutY="86.0" prefHeight="37.0" prefWidth="186.0" text="Insurance Information" />
-                        <TextArea fx:id="pharmacy" layoutX="-1.0" layoutY="123.0" prefHeight="49.0" prefWidth="177.0" text="Pharmacy Information" />
+                        <TextField editable="false" layoutX="1.0" layoutY="4.0" prefHeight="47.0" prefWidth="176.0" text="Patient Information:" />
+                        <TextArea fx:id="contact" editable="false" layoutX="1.0" layoutY="51.0" prefHeight="36.0" prefWidth="190.0" promptText="Contact Information" />
+                        <TextArea fx:id="insurance" editable="false" layoutY="86.0" prefHeight="37.0" prefWidth="186.0" promptText="Insurance Information" />
+                        <TextArea fx:id="pharmacy" editable="false" layoutX="-1.0" layoutY="123.0" prefHeight="49.0" prefWidth="177.0" promptText="Pharmacy Information" />
                         <Button layoutX="44.0" layoutY="313.0" mnemonicParsing="false" onAction="#backToLogin" text="Log out" />
                      </children>
                   </AnchorPane>
@@ -47,11 +48,11 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TextArea layoutX="108.0" layoutY="12.0" prefHeight="57.0" prefWidth="244.0" text="Patient's past medical history. (Read only)" />
+                              <TextArea fx:id="pMed" editable="false" layoutX="108.0" layoutY="12.0" prefHeight="57.0" prefWidth="244.0" promptText="Patient's past medical history. (Read only)" />
                               <Text layoutX="24.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Past Medical History:" wrappingWidth="108.96759033203125" />
-                              <TextArea layoutX="112.0" layoutY="119.0" prefHeight="73.0" prefWidth="244.0" text="Patient's physical test. (Read only)" />
+                              <TextArea fx:id="pPhys" editable="false" layoutX="112.0" layoutY="119.0" prefHeight="73.0" prefWidth="244.0" promptText="Patient's physical test. (Read only)" />
                               <Text layoutX="14.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Physical Test:" wrappingWidth="74.89599609375" />
-                              <TextArea layoutX="112.0" layoutY="233.0" prefHeight="91.0" prefWidth="244.0" text="Patient's diagnosis. (Read only)" />
+                              <TextArea fx:id="pDia" editable="false" layoutX="112.0" layoutY="233.0" prefHeight="91.0" prefWidth="244.0" promptText="Patient's diagnosis. (Read only)" />
                               <Text layoutX="25.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diagnosis:" />
                            </children>
                         </AnchorPane>
@@ -66,9 +67,9 @@
                                     <Font size="12.0" />
                                  </font>
                               </Text>
-                              <TextArea layoutX="112.0" layoutY="41.0" prefHeight="97.0" prefWidth="244.0" text="Visit Summary: &#10;- Patient History&#10;- Physical Exam&#10;- Lab/Imaging Results&#10;- Diagnosis" />
-                              <TextArea layoutX="113.0" layoutY="145.0" prefHeight="97.0" prefWidth="244.0" text="Visit Summary: &#10;- Patient History&#10;- Physical Exam&#10;- Lab/Imaging Results&#10;- Diagnosis" />
-                              <TextArea layoutX="115.0" layoutY="254.0" prefHeight="97.0" prefWidth="244.0" text="Visit Summary: &#10;- Patient History&#10;- Physical Exam&#10;- Lab/Imaging Results&#10;- Diagnosis" />
+                              <TextArea fx:id="date1" editable="false" layoutX="112.0" layoutY="41.0" prefHeight="97.0" prefWidth="244.0" />
+                              <TextArea fx:id="date2" editable="false" layoutX="113.0" layoutY="145.0" prefHeight="97.0" prefWidth="244.0" />
+                              <TextArea fx:id="date3" editable="false" layoutX="115.0" layoutY="254.0" prefHeight="97.0" prefWidth="244.0" />
                               <Text layoutX="25.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Visit:" wrappingWidth="108.96759033203125">
                                  <font>
                                     <Font size="12.0" />
@@ -94,7 +95,7 @@
                               <TextField fx:id="newEmail" layoutX="173.0" layoutY="38.0" promptText="email" />
                               <TextField fx:id="newInsurance" layoutX="183.0" layoutY="92.0" />
                               <TextField fx:id="newPharmacy" layoutX="183.0" layoutY="163.0" promptText="name and address" />
-                              <Button layoutX="222.0" layoutY="295.0" mnemonicParsing="false" text="Update" />
+                              <Button layoutX="222.0" layoutY="295.0" mnemonicParsing="false" onAction="#setinfo" text="Update" />
                            </children>
                         </AnchorPane>
                     </content>
