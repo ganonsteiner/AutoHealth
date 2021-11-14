@@ -35,12 +35,13 @@
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <Text layoutX="50.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Physical Test: " />
-                              <TextArea layoutX="220.0" layoutY="25.0" prefHeight="94.0" prefWidth="650.0" text="This test data input from doctor " />
-                              <Text layoutX="51.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prescriptions:" wrappingWidth="143.0" />
-                              <TextArea layoutX="221.0" layoutY="189.0" prefHeight="79.0" prefWidth="643.0" text="This is prescription data from the doctor" />
-                              <Button layoutX="220.0" layoutY="125.0" mnemonicParsing="false" text="Save" />
-                              <Button layoutX="220.0" layoutY="284.0" mnemonicParsing="false" text="Save" />
-                              <Button layoutX="221.0" layoutY="364.0" mnemonicParsing="false" text="Send to Pharmacy" />
+                              <TextArea fx:id="physicalInput" layoutX="220.0" layoutY="25.0" prefHeight="94.0" prefWidth="650.0" text="This test data input from doctor " />
+                              <Text layoutX="51.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prescriptions:" wrappingWidth="143.0" />
+                              <TextArea fx:id="prescInput" layoutX="220.0" layoutY="140.0" prefHeight="79.0" prefWidth="643.0" text="This is prescription data from the doctor" />
+                              <Button layoutX="220.0" layoutY="340.0" mnemonicParsing="false" onAction="#setPhysicalFromDoc" text="Save" />
+                              <Button layoutX="220.0" layoutY="384.0" mnemonicParsing="false" text="Send to Pharmacy" />
+                              <Label layoutX="50.0" layoutY="244.0" prefHeight="17.0" prefWidth="65.0" text="Patient: " />
+                              <TextArea fx:id="patInput" layoutX="220.0" layoutY="244.0" prefHeight="74.0" prefWidth="196.0" text="Patient name" />
                            </children>
                         </AnchorPane>
                   </content>
@@ -50,7 +51,7 @@
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <Text layoutX="14.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Previous Health Issues:" />
-                              <TextArea layoutX="14.0" layoutY="49.0" prefHeight="114.0" prefWidth="794.0" text="Previous data loaded from .txt file" />
+                              <TextArea fx:id="physReadDoc" layoutX="14.0" layoutY="49.0" prefHeight="114.0" prefWidth="794.0" text="Previous data loaded from .txt file" />
                               <Text layoutX="17.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prescriptions:" />
                               <TextArea layoutX="17.0" layoutY="217.0" prefHeight="120.0" prefWidth="788.0" text="Current Prescriptions loaded from .txt file" />
                               <Text layoutX="18.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Immunization History:" />
