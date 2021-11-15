@@ -63,6 +63,32 @@ public class Doctor extends User implements Serializable
 		}
 	}
 
+	public void message(String username, Message message) {
+		
+		this.messageHistory.add(message);
+		Nurse tempNurse;
+		
+		for(int i = 0; i < nNurses.size(); i++)
+		{
+			tempNurse = nNurses.get(i);
+			
+			if(username.equals(tempNurse.getUsername())) {
+				tempNurse.getMessageHistory().add(message);
+				return;
+			}
+			
+			for(int j = 0; j < nNurses.get(i).patients.size(); j++)
+			{
+				Patient tempPat = tempNurse.getPatients().get(j);
+				if(tempPat.getUsername().equals(username))
+				{
+					tempPat.getMessageHistory().add(message);
+					return;
+				}
+			}
+		}
+	}
+
 	public void setCurrUser(String inCurrUser)
 	{
 		currUser = inCurrUser;
