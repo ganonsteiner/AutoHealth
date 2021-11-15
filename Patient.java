@@ -7,9 +7,9 @@ public class Patient extends User implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	private ArrayList<String> bloodPressure;
-	private ArrayList<Double> bodyTemp;
-	private ArrayList<Double> weight;
-	private ArrayList<Double> height;
+	private ArrayList<String> bodyTemp;
+	private ArrayList<String> weight;
+	private ArrayList<String> height;
 	private String birthday;
 	private String pharmacy;
 	private String insurance;
@@ -30,7 +30,7 @@ public class Patient extends User implements Serializable{
 		birthday = inBirth;
 		myNurse = inNurse;
 		myDoctor = inNurse.getDoctor();
-
+		
 
 		bloodPressure = new ArrayList<>();
 		bodyTemp = new ArrayList<>();
@@ -68,7 +68,7 @@ public class Patient extends User implements Serializable{
 	public void setPharmacy(String inPharm) {
 		pharmacy = inPharm;
 	}
-
+	
 	public String getPharmacy() {
 		return pharmacy;
 	}
@@ -77,11 +77,27 @@ public class Patient extends User implements Serializable{
 		physicals.add(inPhys);
 	}
 
-	public void setVitals(String inBloodPressure, double inBodyTemp, double inWeight, double inHeight) {
+	public void setBloodPressure(String inBloodPressure) {
 		bloodPressure.add(inBloodPressure);
+	}
+	
+	public void setBodyTemp(String inBodyTemp) {
 		bodyTemp.add(inBodyTemp);
+	}
+	
+	public void setWeight(String inWeight) {
 		weight.add(inWeight);
+	}
+	public void setHeight(String inHeight) {
 		height.add(inHeight);
+	}
+	
+	public void setHealthCon(String healthCon) {
+		healthConcerns.add(healthCon);
+	}
+	
+	public void setAllergies(String allergy) {
+		allergens.add(allergy);
 	}
 
 	public String getInsurance() {
@@ -116,18 +132,18 @@ public class Patient extends User implements Serializable{
 		return bloodPressure;
 	}
 
-	public ArrayList<Double> getBodyTemp() {
+	public ArrayList<String> getBodyTemp() {
 		return bodyTemp;
 	}
 
-	public ArrayList<Double> getWeight() {
+	public ArrayList<String> getWeight() {
 		return weight;
 	}
 
-	public ArrayList<Double> getHeight(){
+	public ArrayList<String> getHeight(){
 		return height;
 	}
-
+	
 	public void addPrescription(String inPresc)
 	{
 		prescriptions.add(inPresc);
