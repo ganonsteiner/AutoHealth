@@ -337,6 +337,43 @@ public class Control {
        }
   }
    
+public void sendMessage(ActionEvent event) throws IOException {
+		
+		doctor1 = system.loadFile();
+		Nurse tempNurse;
+		
+		String sender = doctor1.getCurrUser();
+	
+		String reciever = recipient.getText();
+		String subject = nSubject.getText();
+		String body = nBody.getText();
+		
+		Message message = new Message(body, subject, sender, reciever);
+		
+		if(sender.equals(doctor1.getUsername())) {
+			
+			doctor1.message(reciever, message);
+			
+		} else {
+			for (int i = 0; i < doctor1.getNurses().size(); i++) {
+				tempNurse = doctor1.getNurses().get(i);
+				
+				if(sender.equals(tempNurse.getUsername())) {
+					tempNurse.message(reciever, message);
+				}
+				
+				for (int j = 0; j < tempNurse.getPatients().size(); j++) {
+					
+					Patient tempPatient = tempNurse.getPatients().get(j);
+					
+					if (sender.equals(tempPatient.getUsername())) {
+						tempPatient.message(reciever, message);
+					}
+				}
+			}
+		}
+	}	
+	
    public void displayFrontpage(String currMedHistory,String Physicals,String healthCon, String user) {
 	   pMed.setText(currMedHistory);
 	   pPhys.setText(Physicals);
