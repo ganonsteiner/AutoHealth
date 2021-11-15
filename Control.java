@@ -76,6 +76,10 @@ public class Control {
 	@FXML 
 	TextArea healthConcerns;
 	@FXML 
+	TextArea pPresc;
+	@FXML 
+	TextArea presc;
+	@FXML 
 	TextField allergens;
 
 	// nurse text fields for input for messages
@@ -104,6 +108,40 @@ public class Control {
 	private Nurse nurse1 = new Nurse(nurseUser, nursePass, nurseName, doctor1);
 	saveSystem system = new saveSystem();
 	Patient patient1;
+	
+	// alex update
+	@FXML
+	TextArea patInput;
+	@FXML
+	TextArea physReadDoc;
+	@FXML
+	TextArea prescInput;
+	@FXML
+	TextArea physicalInput;
+
+	public void setPhysicalFromDoc(ActionEvent event) throws IOException {
+		String nPhys = physicalInput.getText();
+		String nPat = patInput.getText();
+		doctor1 = system.loadFile();
+
+		doctor1.addPatientPhysical(nPat, nPhys);
+		system.saveFile(doctor1);
+
+		updatePhysicalDescrDoc(doctor1.getPatientFromDoc(nPat).getPhysicals());
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("doctor_screen_jfx.fxml"));
+		root = loader.load();
+
+	}
+	public void updatePhysicalDescrDoc(ArrayList<String> inPhys) {
+		String prString = "";
+		for(int i = 0; i < inPhys.size(); i++)
+		{
+			prString += inPhys.get(i) + "\n";
+		}
+		physReadDoc.setText(prString);
+	}
+	// alex update
 	
 	public void register(ActionEvent event) throws IOException {
 		
@@ -299,16 +337,16 @@ public class Control {
        }
   }
    
-   public void displayFrontpage(String one,String two,String three, String user) {
-	   pMed.setText(one);
-	   pPhys.setText(two);
-	   pDia.setText(three);
+   public void displayFrontpage(String currMedHistory,String Physicals,String healthCon, String user) {
+	   pMed.setText(currMedHistory);
+	   pPhys.setText(Physicals);
+	   pDia.setText(healthCon);
 	   realName.setText(user);
    }   
-   public void displayDates(String one,String  two,String three, String user) {
-	   date1.setText(one);
-	   date2.setText(two);
-	   date3.setText(three);
+   public void displayDates(String medHistory,String  pastPhys,String pastHealthCon, String user) {
+	   date1.setText(medHistory);
+	   date2.setText(pastPhys);
+	   date3.setText(pastHealthCon);
 	   realName.setText(user);
    }
    
