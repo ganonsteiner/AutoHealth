@@ -18,6 +18,7 @@ public class Patient extends User implements Serializable{
 	private ArrayList<String> allergens;
 	private ArrayList<String> healthConcerns;
 	private ArrayList<String> physicals;
+	private ArrayList<String> prescriptions;
 	int age;
 
 	private Doctor myDoctor;
@@ -29,7 +30,7 @@ public class Patient extends User implements Serializable{
 		birthday = inBirth;
 		myNurse = inNurse;
 		myDoctor = inNurse.getDoctor();
-		
+
 
 		bloodPressure = new ArrayList<>();
 		bodyTemp = new ArrayList<>();
@@ -67,7 +68,7 @@ public class Patient extends User implements Serializable{
 	public void setPharmacy(String inPharm) {
 		pharmacy = inPharm;
 	}
-	
+
 	public String getPharmacy() {
 		return pharmacy;
 	}
@@ -125,6 +126,16 @@ public class Patient extends User implements Serializable{
 
 	public ArrayList<Double> getHeight(){
 		return height;
+	}
+
+	public void addPrescription(String inPresc)
+	{
+		prescriptions.add(inPresc);
+	}
+
+	public ArrayList<String> getPrescriptions()
+	{
+		return prescriptions;
 	}
 
 	public void message(String username, Message message)
